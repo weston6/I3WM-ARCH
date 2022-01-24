@@ -9,7 +9,7 @@
 general {
         colors = true
         interval = 5
-	    color_good = "#CD853F"
+	    color_good = "#8ec07c"
         color_bad = "#586E75"
         color_degraded = "#DC322F"
 }
@@ -26,20 +26,21 @@ order += "memory"
 order += "tztime local"
 
 
+
 wireless _first_ {
     #format_up = "WF(%quality at %essid-%ip)"
-    format_up = " (%essid /%quality)  (%ip)"
-	format_down = " (No-Wifi)"
+    format_up = " %essid/%quality  %ip"
+	format_down = " No-Wifi"
 }
 
 ethernet _first_ {
-    format_up = "%ip (%speed)"
+    format_up = "%ip/%speed"
     format_down = " Eth"
 }
 
 volume master {
-    format = " (%volume)"
-    format_muted = " (muted (%volume)]"
+    format = " %volume"
+    format_muted = " muted (%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
@@ -48,8 +49,8 @@ volume master {
 battery all {
     #format = "BAT(%percentage %remaining)"
 	# format = "%status %percentage %remaining %emptytime"
-    format = "%status (%percentage)"
-    format_down = "(No battery)"
+    format = "%status%percentage"
+    format_down = "No battery"
     last_full_capacity = true
     integer_battery_capacity = true
     # status_chr = ""
@@ -67,26 +68,26 @@ battery all {
 
 disk "/" {
     #format = "Disk(%avail)"
-	format = " (%avail)"
+	format = " %avail"
 }
 
 
 load {
-    format = " (%1min)"
+    format = " %1min"
 }
 
 cpu_usage {
-    format = " (%usage)"
+    format = " %usage"
 }
 
 memory {
     #format = "Memory:(%used/%available)"
-    format = " (%used/%available)"
+    format = " %used/%available"
 	threshold_degraded = "1G"
     format_degraded = "MEMORY < %available"
 }
 
 tztime local {
     #format = "%Y-%m-%d %H:%M:%S"
-	format = " (%m月%d日)  (%H:%M:%S)"
+	format = " %m月%d日  %H:%M:%S"
 }

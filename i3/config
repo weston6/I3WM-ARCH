@@ -41,6 +41,8 @@ gaps outer 9
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# (dunst)
+exec --no-startup-id dunst
 
 #(compton autostart)
 exec --no-startup-id  picom -b
@@ -64,7 +66,8 @@ exec --no-startup-id nitrogen --restore
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec_always xautolock -time 1 -locker "i3lock -- scrot -z -o -c 000000"
+#exec_always xautolock -time 1 -locker "i3lock -- scrot -z -o -i 000000"
+exec_always xantolock -time 1 -locker "betterlockscreen --lock blur"
 
 # [网络管理]
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -80,31 +83,32 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # [屏幕亮度]
+# Use xbacklight to adjust screen light.
 # up light of %10
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10;
 #down light of %10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10;
 
 # [浮动窗口]（支持鼠标拖拽）
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # [打开终端]start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+t exec alacritty
 
 # [打开firefox]
 bindsym $mod+Shift+w exec firefox
 
 # [ open file managner.
-bindsym $mod+Shift+f exec thunar
+bindsym $mod+Shift+f exec pcmanfm
 
 # [关闭窗口]
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # [better 锁屏幕]
-bindsym $mod+b exec betterlockscreen -l
+bindsym $mod+b exec betterlockscreen  --lock blur
 
 # [打开菜单]
 # start dmenu (a program launcher)
@@ -244,9 +248,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # [关机/重启/锁屏]
-set $Locker i3lock -c 000000 && sleep 1
-
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate,(r)reboot, (Shift+s) 
+#set $Locker i3lock -c 000000  && sleep 1
+set $Locker betterlockscreen --lock && sleep 1
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate,(r)reboot, (Shift+s)  
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
@@ -276,12 +280,15 @@ bar {
     # 自定义分隔符
     separator_symbol "::" 
     workspace_buttons yes
-    colors {
-        	background 	#0000000f
-        	statusline 	#ffffff
 
-        	focused_workspace  #000000 #2E8B57
-        	active_workspace   #ffffff #FFA500
+    colors {
+            background 	#00000000
+        	statusline 	#fbf1c7
+            separator   #fe8019
+
+
+        	focused_workspace  #000000 #83a598
+        	active_workspace   #fbf1c7 #b8bb26
         	inactive_workspace #888888 #222222
         	urgent_workspace   #ffffff #900000
     	}
