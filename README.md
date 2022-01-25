@@ -5,7 +5,7 @@
 
 > 壁纸来源自 `ENDEAVOUR OS ` 官方推特👓
 
-![i3lock-fancy](C:\Users\liuld\Documents\GitHub\I3WM-ARCH\i3lock-fancy.png)
+![i3lock-fancy](./i3lock-fancy.png)
 
 ![i3status_rust_bar](./i3status_rust_bar.png)
 
