@@ -1,13 +1,13 @@
 # 😊MY-I3WM-ARCH发🌗
 >   主旨：简单，可控。发🤞🐱‍🏍
 
-<img src="./2022-01-25_11-10.png" alt="2022-01-25_11-10" style="zoom:75%;" />
+<img src="./source/2022-01-25_11-10.png" alt="2022-01-25_11-10" style="zoom:75%;" />
 
 > 壁纸来源自 `ENDEAVOUR OS ` 官方推特👓
 
-![i3lock-fancy](./i3lock-fancy.png)
+![i3lock-fancy](./source/i3lock-fancy.png)
 
-![i3status_rust_bar](./i3status_rust_bar.png)
+![i3status_rust_bar](./source/i3status_rust_bar.png)
 
 > `i3status-rust` **需要自行配置**🆗
 
@@ -49,7 +49,7 @@
 
 - 【**slick-greeter**】
 
-![222](./222.png)
+![222](./source/login2.png)
 
 下载链接：https://github.com/linuxmint/slick-greeter
 
@@ -57,7 +57,7 @@
 
 - 【**Aether**】
 
-![login](./login.png)
+![login](./source/login.png)
 
 下载链接 ：https://github.com/NoiSek/Aether
 
