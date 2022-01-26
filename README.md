@@ -9,7 +9,7 @@
 
 ![i3status_rust_bar](./source/i3status_rust_bar.png)
 
-> `i3status-rust` **需要自行配置**🆗
+
 
 ## 👀I3WM 配置
 
@@ -37,13 +37,15 @@
 - vim
 - paru  #rust开发的aur助手
 - xorg
+- ttf-awesome 
 
 
 ### 🤳配置
 
-- ✔`alacritty` `dunst` `i3` `i3status`几个文件拷贝到`~/.config` 里
+- ✔`alacritty` `dunst` `i3` `i3status/i3status-rust`几个文件拷贝到`~/.config` 里
 
 - ✔`.xprofile` `.zshrc`拷贝到用户目录`$HOME`里
+
 
 ### lightdm 主题
 

@@ -1,13 +1,23 @@
-#------------------------------#
-#  I3-WM CONFIGURATION         #
-#------------------------------#
+#+---------------------------------------------------------------+
+#+    ________   _      ____  ___  _________  _  _______________ +
+#+   /  _|_  ___| | /| / /  |/  / / ___/ __ \/ |/ / __/  _/ ___/ +
+#+  _/ /_/_ /___| |/ |/ / /|_/ / / /__/ /_/ /    / _/_/ // (_ /  +
+#+ /___/____/   |__/|__/_/  /_/  \___/\____/_/|_/_/ /___/\___/   +
+#+                                                               +
+#+                (  i3-wm config  )                             +
+#+---------------------------------------------------------------+
 
-# [设置默认键]
+
+#==============================#
+# [设置默认键]                 #
+#==============================#
 # “mode4” == Super Key。
 set $mod Mod4
 
-# [字体设置]
-font pango:Hack 9
+#==============================#
+# [字体设置]                   #
+#==============================#
+font pango:Hack,Bold 9
 
 #==============================#
 ## [窗口配置] （window config）#
@@ -25,13 +35,17 @@ gaps inner 10
 # 外间距
 gaps outer 9
 
-##[开机启动]
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
+
+#=============================#
+##[开机启动]                  #
+#=============================#
+
+# (Start XDG autostart .desktop files using dex）
+# See also : https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
 # (dunst)
-#exec --no-startup-id dunst
+exec --no-startup-id dunst
 
 #(compton autostart)
 exec --no-startup-id  picom -b
@@ -51,7 +65,11 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
 #(网络管理)
 exec --no-startup-id nm-applet
 
-# [声音]
+#===============================#
+## [ 应用快捷键设置]		#
+#===============================#
+
+# (声音)
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -59,36 +77,39 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# [屏幕亮度]
+# (屏幕亮度)
 # Use xbacklight to adjust screen light.
 # up light of %10
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10;
 #down light of %10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10;
 
-# [浮动窗口]（支持鼠标拖拽）
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# [打开终端]start a terminal
+# (打开终端)start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# [打开firefox]
+# (打开firefox)
 bindsym $mod+Shift+w exec firefox
 
-# [ open file managner.
+# (open file managner)
 bindsym $mod+Shift+f exec pcmanfm
-
-# [关闭窗口]
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# [better 锁屏幕]
-bindsym $mod+b exec betterlockscreen  --lock blur
 
 # [打开菜单]
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+#==================================#
+## [ 窗口设置 ]			   #
+#==================================#
+
+# (浮动窗口)-支持鼠标拖拽
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+
+# (关闭窗口)
+# kill focused window
+bindsym $mod+Shift+q kill
+
 
 # change focus
 bindsym $mod+j focus left
@@ -140,8 +161,15 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+
+#================================#
+## [ 工作区 ] 			 #
+#================================#
+
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
+# (工作区名绑定设置)
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -153,7 +181,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-
+# (切换工作区)
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -166,6 +194,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
+# (窗口工作区切换)
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -217,7 +246,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# [关机/重启/锁屏]
+#===========================#
+# [关机/重启/锁屏] 	    #
+#===========================#
+
 #set $Locker i3lock -c 000000  && sleep 1
 set $Locker i3lock-fancy  && sleep 1
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate,(r)reboot, (Shift+s)  
@@ -236,15 +268,18 @@ mode "$mode_system" {
 
 bindsym $mod+q mode "$mode_system"
 
-# [i3bar配置]
+#===========================#
+## [i3bar配置]              #
+#===========================#
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status
+    status_command i3status-rs
     #状态栏隐藏
     #mode	       hide
     #状态栏CSS透明化
-    i3bar_command i3bar --transparency
+    #i3bar_command i3bar --transparency
     # 状态栏位置
     #position        top     
     # 自定义分隔符
@@ -252,15 +287,13 @@ bar {
     workspace_buttons yes
 
     colors {
-            background 	#00000000
+            background 	#000000
             statusline 	#fbf1c7
             separator   #fe8019
-
-
-        	focused_workspace  #000000 #83a598
-        	active_workspace   #fbf1c7 #b8bb26
-        	inactive_workspace #888888 #222222
-        	urgent_workspace   #ffffff #900000
+ 	    focused_workspace  #000000 #83a598
+            active_workspace   #fbf1c7 #b8bb26
+            inactive_workspace #888888 #222222
+            urgent_workspace   #ffffff #900000
     	}
 }
 

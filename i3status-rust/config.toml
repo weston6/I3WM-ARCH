@@ -1,0 +1,113 @@
+
+[theme]
+#name = "gruvbox-dark"
+name = "solarized-dark"
+
+[icons] 
+name = "awesome5"
+
+[[block]]
+block = "net"
+device = "wlp4s0"
+format = "{ssid} ({signal_strength}) {speed_down;K*b}"
+interval = 5
+[block.theme_overrides]
+idle_bg = "#9580ff"
+idle_fg = "#000000"
+
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+#info_type = "available"
+info_type = "free"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+format = "{icon} {used}/{total} ({available} free)"
+[block.theme_overrides]
+idle_bg = "#ff80bf"
+idle_fg = "#000000"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+#format_mem = "{mem_used_percents}"
+format_mem = "{mem_used}/{mem_total}"
+format_swap = "{swap_used_percents}"
+[block.theme_overrides]
+idle_bg = "#ff9580"
+idle_fg = "#000000"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{frequency}"
+[block.theme_overrides]
+idle_bg = "#e86342"
+idle_fg = "#000000"
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+[block.theme_overrides]
+idle_bg = "#9c1276"
+idle_fg = "#abcdef"
+
+[[block]]
+block = "sound"
+step_width = 3
+driver = "auto"
+format = "{volume}"
+[block.theme_overrides]
+idle_bg = "#ffff80"
+idle_fg = "#000000"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+minimum = 10
+maximum = 100
+step_width = 10
+cycle = [100, 50, 10, 50]
+icons_format = "  "
+[block.theme_overrides]
+idle_bg = "#ff8c00"
+idle_fg = "#000000"
+
+[[block]]
+block = "battery"
+interval = 10
+full_threshold = 100
+good = 60
+warning = 25
+critical = 15
+allow_missing = false
+hide_missing = false
+format = "{percentage} {time} {power}"
+[block.theme_overrides]
+idle_bg = "#606760"
+idle_fg = "#000000"
+
+#[[block]]
+#block = "bluetooth"
+#mac = "A0:8A:F5:B8:01:FD"
+#format = "Mousein {percentage}"
+#format_unavailable = "No-Mousein"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"
+[block.theme_overrides]
+idle_bg = "#474c47"
+idle_fg = "#abcdef"
+
+[[block]]
+block = "notify"
+format = "{state}"
+
+

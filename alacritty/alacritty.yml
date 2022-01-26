@@ -3,7 +3,7 @@ live_config_reload: true
 # Tab 缩进
 tabspaces: 4
 # 背景透明度
-background_opacity: 0.9
+opacity: 0.7
 
 window:
   # 窗口大小
@@ -13,9 +13,9 @@ window:
 
   # 边缘空白
   padding:
-    x: 10
-    y: 15
-  dynamic_padding: false
+    x: 1
+    y: 1
+  dynamic_padding: true
   startup_mode: Maximized
   # 窗口修饰
   # - full: 有边界+标题栏
@@ -40,20 +40,20 @@ font:
   size: 8
   # 字体
   normal:
-    family: 'Cascadia Code'
+    family: 'Hack'
     style: Regular
   bold:
-    family: 'Cascadia Code'
+    family: 'Hack'
     style: Bold
   italic:
-    family: 'Cascadia Code'
+    family: 'Hack'
     style: Italic
   bold_italic:
-    family: 'Cascadia Code'
+    family: 'Hack'
     style: Bold Italic
 
-  # 细描边
-  use_thin_strokes: true
+  # 细描边-如果是视网膜屏幕开启
+  use_thin_strokes: false
 
 
 # color
@@ -64,10 +64,10 @@ colors:
     foreground: '0xf8f8f2'
   cursor:
     text: CellBackground
-    cursor: CellForeground
+    cursor: '0x3CB371'
   vi_mode_cursor:
     text: CellBackground
-    cursor: CellForeground
+    cursor: '0x3CB371'
   search:
     matches:
       foreground: '0x44475a'
