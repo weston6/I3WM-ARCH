@@ -1,13 +1,14 @@
 
 [theme]
-#name = "gruvbox-dark"
-name = "solarized-dark"
+name = "gruvbox-dark"
+#name = "solarized-dark"
 
 [icons] 
 name = "awesome5"
 
 [[block]]
 block = "net"
+on_click = "alacritty -e nmtui"
 device = "wlp4s0"
 format = "{ssid} ({signal_strength}) {speed_down;K*b}"
 interval = 5
@@ -78,6 +79,8 @@ icons_format = "  "
 idle_bg = "#ff8c00"
 idle_fg = "#000000"
 
+
+
 [[block]]
 block = "battery"
 interval = 10
@@ -92,11 +95,19 @@ format = "{percentage} {time} {power}"
 idle_bg = "#606760"
 idle_fg = "#000000"
 
+[[block]]
+block = "bluetooth"
+mac = "C4:2C:03:B3:31:4B"
+format = "Mouse {percentage}"
+hide_disconnected=true
+
+[[block]]
+block = "uptime"
+
 #[[block]]
-#block = "bluetooth"
-#mac = "A0:8A:F5:B8:01:FD"
-#format = "Mousein {percentage}"
-#format_unavailable = "No-Mousein"
+#block = "xrandr"
+#icons = true
+#resolution = true
 
 [[block]]
 block = "time"

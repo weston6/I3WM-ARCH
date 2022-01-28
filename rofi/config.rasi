@@ -1,0 +1,24 @@
+configuration {
+	modi: "window,run,ssh,drun";
+	font: "Hack 15";
+	icon-theme: "Dracula";
+    show-icons: true;
+	display-window:"";
+/*	display-windowcd: ;*/
+	display-run:"";
+	display-ssh:"" ;
+	display-drun: " ";
+/*	display-combi: ;*/
+/*	display-keys: ; */
+	display-filebrowser:"";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@theme "~/.config/rofi/themes/srcery_rofi.rasi"

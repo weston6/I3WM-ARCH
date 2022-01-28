@@ -94,8 +94,7 @@ bindsym $mod+Shift+w exec firefox
 bindsym $mod+Shift+f exec pcmanfm
 
 # [打开菜单]
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 #==================================#
 ## [ 窗口设置 ]			   #
@@ -170,7 +169,7 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 # (工作区名绑定设置)
-set $ws1 "1"
+set $ws1 "1 "
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
@@ -290,10 +289,13 @@ bar {
             background 	#000000
             statusline 	#fbf1c7
             separator   #fe8019
- 	    focused_workspace  #000000 #83a598
+ 	        focused_workspace  #000000 #83a598
             active_workspace   #fbf1c7 #b8bb26
             inactive_workspace #888888 #222222
             urgent_workspace   #ffffff #900000
     	}
 }
+
+
+
 
