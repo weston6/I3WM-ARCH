@@ -31,9 +31,9 @@ hide_edge_borders both
 ## [窗口间隙设置]              #
 #==============================#
 # 内间距
-gaps inner 10
+gaps inner 8
 # 外间距
-gaps outer 9
+gaps outer 6
 
 
 #=============================#
@@ -45,13 +45,13 @@ gaps outer 9
 exec --no-startup-id dex --autostart --environment i3
 
 # (dunst)
-exec --no-startup-id dunst
+exec_always --no-startup-id dunst
 
 #(compton autostart)
 exec --no-startup-id  picom -b
 
 #(lxsession)
-#exec --no-startup-id lxsession
+exec --no-startup-id lxsession
 
 #(ibus autostart)
 exec --no-startup-id ibus-daemon -d -x
@@ -60,7 +60,10 @@ exec --no-startup-id ibus-daemon -d -x
 exec --no-startup-id nitrogen --restore
 
 #(锁屏)
+# xset 设置黑屏时间
+exec --no-startup-id xset dpms 300 800 1200
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
+exec --no-startup-id xautolock -time 5 -locker "i3lock-fancy"
 
 #(网络管理)
 exec --no-startup-id nm-applet
@@ -104,6 +107,9 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# (窗口隐藏和恢复)
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+plus scratchpad show
 
 # (关闭窗口)
 # kill focused window
@@ -169,7 +175,7 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 # (工作区名绑定设置)
-set $ws1 "1 "
+set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
@@ -179,6 +185,13 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+#(指定程序启动，默认在那个工作区)
+#assign [class="(?i)Microsoft Edge"] $ws2
+#assign [class="Typora"] $ws3
+#assign [class="code"] $ws4
+assign [class="YesPlayMusic"] $ws5
+assign [class="vlc"] $ws5
 
 # (切换工作区)
 # switch to workspace
@@ -246,11 +259,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #===========================#
-# [关机/重启/锁屏] 	    #
+# [关机/重启/锁屏]-电源管理 #
 #===========================#
 
 #set $Locker i3lock -c 000000  && sleep 1
-set $Locker i3lock-fancy  && sleep 1
+set $Locker i3lock-fancy && sleep 1
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate,(r)reboot, (Shift+s)  
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
@@ -279,23 +292,27 @@ bar {
     #mode	       hide
     #状态栏CSS透明化
     #i3bar_command i3bar --transparency
-    # 状态栏位置
-    #position        top     
+    # 状态栏位置(top/bottom)
+    position   bottom     
     # 自定义分隔符
-    separator_symbol "::" 
+    #separator_symbol "::" 
     workspace_buttons yes
+    #隐藏工作区数字
+    strip_workspace_numbers yes
+
 
     colors {
+            #背景颜色
             background 	#000000
+            #状态栏颜色
             statusline 	#fbf1c7
+            #分隔符颜色
             separator   #fe8019
- 	        focused_workspace  #000000 #83a598
-            active_workspace   #fbf1c7 #b8bb26
-            inactive_workspace #888888 #222222
-            urgent_workspace   #ffffff #900000
+            #工作区颜色        边框      背景     文字
+            focused_workspace  #fe8019   #83a598  #000000 
+            active_workspace   #fbf1c7   #b8bb26  
+            inactive_workspace #888888   #222222
+            urgent_workspace   #ffffff   #900000
     	}
 }
-
-
-
 

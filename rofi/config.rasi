@@ -21,4 +21,4 @@ configuration {
   }
 }
 
-@theme "~/.config/rofi/themes/srcery_rofi.rasi"
+@theme "~/.config/rofi/themes/config2.rasi"
