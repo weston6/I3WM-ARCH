@@ -23,17 +23,22 @@ font pango:Hack,Bold 9
 ## [窗口配置] （window config）#
 #==============================#
 
-new_window none
+#new_window none
 new_float normal
 hide_edge_borders both
+
+title_align center
+#for_window [class=".*"] border normal 4
+for_window [class=".*"] border pixel 2
+
 
 #==============================#
 ## [窗口间隙设置]              #
 #==============================#
 # 内间距
-gaps inner 8
+gaps inner 10
 # 外间距
-gaps outer 6
+gaps outer 9
 
 
 #=============================#
@@ -69,7 +74,7 @@ exec --no-startup-id xautolock -time 5 -locker "i3lock-fancy"
 exec --no-startup-id nm-applet
 
 #===============================#
-## [ 应用快捷键设置]		#
+##   [ 应用快捷键设置]	    	#
 #===============================#
 
 # (声音)
@@ -280,6 +285,21 @@ mode "$mode_system" {
 
 bindsym $mod+q mode "$mode_system"
 
+
+#========================#
+## [Window Color]        #
+#========================#
+# class                 border  backgr. text    indicator child_border
+client.focused          #DA6E89 #DA6E89 #FFFFFF #98C379   #DA6E89
+client.focused_inactive #61AFEF #61AFEF #1E222A #98C379   #61AFEF
+client.unfocused        #2C3038 #2C3038 #FFFFFF #98C379   #2C3038
+client.urgent           #C678DD #C678DD #FFFFFF #98C379   #C678DD
+client.placeholder      #1E222A #1E222A #FFFFFF #98C379   #1E222A
+
+client.background       #1E222A
+
+
+
 #===========================#
 ## [i3bar配置]              #
 #===========================#
@@ -293,7 +313,7 @@ bar {
     #状态栏CSS透明化
     #i3bar_command i3bar --transparency
     # 状态栏位置(top/bottom)
-    position   bottom     
+    position   bottom    
     # 自定义分隔符
     #separator_symbol "::" 
     workspace_buttons yes
